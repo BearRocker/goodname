@@ -8,7 +8,7 @@ pygame.init()
 
 toponym = input()
 
-z = '16'
+z = '13'
 map = 'map'
 
 map_params = find_obj.return_params(toponym)
@@ -56,7 +56,10 @@ while running:
             if int(z) > 9:
                 if int(z) == 10:
                     s = 0.1
-                s = 0.01
+                if int(z) > 12:
+                    s = 0.001
+                else:
+                    s = 0.01
             else:
                 s = 0.5
             if event.key == pygame.K_UP:
