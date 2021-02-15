@@ -49,7 +49,7 @@ while running:
                 if map == 'map':
                     map = 'sat'
                 elif map == 'sat':
-                    map = 'skl'
+                    map = 'sat,skl'
                 else:
                     map = 'map'
             if int(z) > 9:
