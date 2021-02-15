@@ -1,17 +1,22 @@
 import pygame
 import os
+import find_obj
 
 import requests
 
 pygame.init()
 
-longitude = '57'
-lattitude = '35'
-z = '10'
+toponym = input()
+
+z = '16'
 map = 'map'
 
+map_params = find_obj.return_params(toponym)
+longitude, lattitude = map_params['ll'].split(',')
+
+
 def draw_map():
-    global  map
+    global map
     map_params = {
             "ll": ",".join([longitude, lattitude]),
             'z': z,
@@ -44,14 +49,13 @@ while running:
                 if map == 'map':
                     map = 'sat'
                 elif map == 'sat':
-                    map = 'skl'
+                    map = 'sat,skl'
                 else:
                     map = 'map'
             if int(z) > 9:
                 if int(z) == 10:
                     s = 0.1
-                else:
-                    s = 0.01
+                s = 0.01
             else:
                 s = 0.5
             if event.key == pygame.K_UP:
@@ -66,8 +70,6 @@ while running:
             if event.key == pygame.K_RIGHT:
                 if float(lattitude) + s <= 180:
                     longitude = str(float(longitude) + s)
-
-
     map_file = draw_map()
     screen.blit(pygame.image.load(map_file), (0, 0))
     pygame.display.flip()
