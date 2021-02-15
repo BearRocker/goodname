@@ -13,7 +13,7 @@ map = 'map'
 
 map_params = find_obj.return_params(toponym)
 longitude, lattitude = map_params['ll'].split(',')
-
+pt = map_params['pt']
 
 def draw_map():
     global map
@@ -21,6 +21,7 @@ def draw_map():
             "ll": ",".join([longitude, lattitude]),
             'z': z,
             "l": map,
+            'pt': pt
         }
 
     map_api_server = "http://static-maps.yandex.ru/1.x/"
