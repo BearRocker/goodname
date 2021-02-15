@@ -5,8 +5,8 @@ import requests
 
 pygame.init()
 
-longitude = '37.61779'
-lattitude = '55.755241'
+longitude = '57'
+lattitude = '35'
 z = '12'
 map = 'map'
 
@@ -46,13 +46,17 @@ while running:
                 else:
                     map = 'map'
             if event.key == pygame.K_UP:
-                lattitude = str(float(lattitude) - 0.1)
+                if float(lattitude) +0.1 >= 0:
+                    lattitude = str(float(lattitude) + 0.1)
             if event.key == pygame.K_DOWN:
-                lattitude = str(float(lattitude) + 0.1)
+                if float(lattitude) - 0.1 <= 85:
+                    lattitude = str(float(lattitude) - 0.1)
             if event.key == pygame.K_LEFT:
-                longitude = str(float(longitude) - 0.1)
+                if float(lattitude) - 0.1 >= 0:
+                    longitude = str(float(longitude) - 0.1)
             if event.key == pygame.K_RIGHT:
-                longitude = str(float(longitude) + 0.1)
+                if float(lattitude) + 0.1 <= 180:
+                    longitude = str(float(longitude) + 0.1)
     map_file = draw_map()
     screen.blit(pygame.image.load(map_file), (0, 0))
     pygame.display.flip()
