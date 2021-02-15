@@ -43,6 +43,8 @@ while running:
             if event.key == pygame.K_SPACE:
                 if map == 'map':
                     map = 'sat'
+                elif map == 'sat':
+                    map = 'skl'
                 else:
                     map = 'map'
             if int(z) > 9:
